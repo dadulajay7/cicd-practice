@@ -78,8 +78,9 @@ Fix it and push again.
 ```bash
 git checkout -b feature/multiply
 ```
-Add a `multiply` function and `/multiply` endpoint — but **don't write tests** yet. Push the branch and
-open a PR. The coverage gate (`--cov-fail-under=80`) may fail. Add tests until it passes.
+In `pyproject.toml`, raise the coverage gate from `--cov-fail-under=80` to `--cov-fail-under=100`.
+Then add a `multiply` function and `/multiply` endpoint — but **don't write tests** yet. Push the
+branch and open a PR. The coverage gate will fail (about 93%). Add tests until it passes, then merge.
 **Learn:** CI runs on PRs so problems are caught *before* merging.
 
 ### Exercise 3 — Protect `main`
