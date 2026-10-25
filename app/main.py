@@ -36,3 +36,12 @@ def divide_endpoint(a: float, b: float) -> dict:
         return {"result": divide(a, b)}
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+def multiply(a: float, b: float) -> float:
+    return a * b
+
+
+@app.get("/multiply")
+def multiply_endpoint(a: float, b: float) -> dict:
+    return {"result": multiply(a, b)}
