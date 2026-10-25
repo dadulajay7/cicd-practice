@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from app.main import add, app, divide
+from app.main import add, app, divide, multiply
 
 client = TestClient(app)
 
@@ -40,3 +40,13 @@ def test_add_endpoint():
 def test_divide_by_zero_returns_400():
     response = client.get("/divide", params={"a": 1, "b": 0})
     assert response.status_code == 400
+
+
+def test_multiply():
+    assert multiply(3, 4) == 12
+
+
+def test_multiply_endpoint():
+    response = client.get("/multiply", params={"a": 3, "b": 4})
+    assert response.status_code == 200
+    assert response.json() == {"result": 12}
